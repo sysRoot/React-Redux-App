@@ -6,7 +6,11 @@ import { fetchData } from '../actions';
 const Ticker = () => {
     const tickerData = useSelector((state) => state.tickerData);
     const pastTickers = useSelector((state) => state.pastTickers);
+    const isLoading = useSelector((state) => state.isLoading);
     const dispatch = useDispatch();
+    if (isLoading) {
+        return <p>Loading...</p>
+    }
     if (tickerData.hasOwnProperty('ask') && pastTickers.length < 1) {
         return (
             <>

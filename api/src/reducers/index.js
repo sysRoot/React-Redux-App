@@ -15,7 +15,7 @@ export const reducer = (state = initialState, action) => {
             const nextState = {
                 ...state,
                 pastTickers: state.tickerData.hasOwnProperty('ask')
-                    ? [...state.pastTickers, { ...state.tickerData }]
+                    ? [{ ...state.tickerData }, ...state.pastTickers]
                     : state.pastTickers,
                 tickerData: action.payload,
                 isLoading: false,
